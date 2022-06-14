@@ -1,26 +1,26 @@
 var cron = require('node-cron');
-var sudo = require('sudo-js');
+// var sudo = require('sudo-js');
 const { exec, execFile, execSync } = require('child_process');
 //also install module "uuid"
 
 
-sudo.setPassword('123');
+// sudo.setPassword('123');
 
 
 // /home/brody/serverfiles/Erupe/bin/quests 
 //is the folder to movec quests into
 
 
-sudo.check(function(valid) {
-    console.log('password valid : ', valid);
-});
+// sudo.check(function(valid) {
+//     console.log('password valid : ', valid);
+// });
 
 
 
 
 
 
-exec("konsole")
+// exec("konsole")
 
 
 
