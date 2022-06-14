@@ -1,6 +1,7 @@
 var cron = require('node-cron');
 var sudo = require('sudo-js');
-sudo.setPassword('123');
+//also install module "uuid"
+sudo.setPassword('1fads23');
 
 
 
