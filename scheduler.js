@@ -51,7 +51,7 @@ cron.schedule('*/2 * * * *', () => {
 
 //  0 0 * * MON
 //every monday at midnight
-cron.schedule('1/2 * * * *', () => {
+cron.schedule('*/3 * * * *', () => {
     console.log('its monday and i');
     //move original quests into quest folder
     //    cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests
