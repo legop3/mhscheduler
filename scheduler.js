@@ -1,6 +1,7 @@
 var cron = require('node-cron');
 // var sudo = require('sudo-js');
 const { exec, execFile, execSync } = require('child_process');
+const { stderr } = require('process');
 //also install module "uuid"
 
 
@@ -26,13 +27,13 @@ const { exec, execFile, execSync } = require('child_process');
 
 async function friday() {
   exec("tmuxinator stop gameserver")
-  execSync("cp /home/brody/eventquests/* /home/brody/serverfiles/Erupe/bin/quests -v")
+  execSync("cp /home/brody/eventquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
 async function monday() {
   exec("tmuxinator stop gameserver")
-  execSync("cp /home/brody/normalquests/* /home/brody/serverfiles/Erupe/bin/quests -v")
+  execSync("cp /home/brody/normalquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
