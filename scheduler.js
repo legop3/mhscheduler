@@ -17,6 +17,7 @@ const { stderr } = require('process');
 // });
 
 
+exec("cp /home/brody/normalquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
 
 
 
