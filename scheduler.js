@@ -26,13 +26,13 @@ const { exec, execFile, execSync } = require('child_process');
 
 async function friday() {
   execSync("tmuxinator stop gameserver")
-  execSync("cp /home/brody/eventquests/* /home/brody/serverfiles/Erpue/bin/quests -v")
+  execSync("cp /home/brody/eventquests/* /home/brody/serverfiles/Erupe/bin/quests -v")
   execSync("tmuxinator start gameserver")
 }
 
 async function monday() {
   execSync("tmuxinator stop gameserver")
-  execSync("cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests -v")
+  execSync("cp /home/brody/normalquests/* /home/brody/serverfiles/Erupe/bin/quests -v")
   execSync("tmuxinator start gameserver")
 }
 
