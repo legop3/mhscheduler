@@ -26,13 +26,13 @@ friday()
 
 async function friday() {
   exec("tmuxinator stop gameserver")
-  execSync("cp /home/brody/eventquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec("cp /home/brody/eventquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
 async function monday() {
   exec("tmuxinator stop gameserver")
-  execSync("cp /home/brody/normalquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec("cp /home/brody/normalquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
