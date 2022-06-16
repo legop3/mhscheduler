@@ -18,6 +18,7 @@ const { stderr } = require('process');
 
 
 // exec("konsole")
+exec('konsole -e "tmuxinator start gameserver"')
 
 
 
