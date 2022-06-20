@@ -4,7 +4,7 @@ const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
 const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-
+const fs = require('fs');
 //also install module "uuid"
 
 
@@ -75,8 +75,17 @@ cron.schedule('* * * * *', () => {
 
 
   // exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
-  execSync('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
-    .then(console.log(stdout))
+  execSync('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"', () => {
+    fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
+      if (err) throw err;
+      let discord = JSON.parse(data)
+      console.log(discord)
+    })
+
+  })
+
+    
+    
 
 })
 
