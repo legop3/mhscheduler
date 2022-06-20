@@ -1,7 +1,7 @@
 var cron = require('node-cron');
 // var sudo = require('sudo-js');
 const { exec, execFile, execSync } = require('child_process');
-const { stderr } = require('process');
+const { stderr, stdout } = require('process');
 //also install module "uuid"
 
 
@@ -66,8 +66,8 @@ cron.schedule('0 0 * * *', () => {
   console.log("running the fuckuing thing to fuck your mom")
 
 
-  exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
-
-
+  // exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
+  execSync('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
+    .then(console.log(stdout))
 
 })
