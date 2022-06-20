@@ -80,13 +80,13 @@ cron.schedule('* * * * *', () => {
   .then(
     fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
       if (err) throw err;
-      let discord = JSON.parse(data)
-      console.log(discord)
+      // let discord = JSON.parse(data)
+      // console.log(discord)
 
       // const embed = new MessageEmbed();
       // embed.addFields(discord);
       // console.log(embed)
-      client.channels.cache.get('988518785940082768').send(discord.toString())
+      // client.channels.cache.get('988518785940082768').send(discord.toString())
 
     })
   )
