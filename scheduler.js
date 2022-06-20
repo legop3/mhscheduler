@@ -72,7 +72,7 @@ cron.schedule('0 0 * * MON', () => {
 
 // 0 0 * * *
 cron.schedule('0 0 * * *', () => {
-  console.log("running the fuckuing thing to fuck your mom")
+  console.log("running thescript to randomize")
 
 
   exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
