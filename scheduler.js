@@ -2,7 +2,7 @@ var cron = require('node-cron');
 // var sudo = require('sudo-js');
 const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, MessageEmbed } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fs = require('fs');
 //also install module "uuid"
@@ -82,6 +82,11 @@ cron.schedule('* * * * *', () => {
       if (err) throw err;
       let discord = JSON.parse(data)
       console.log(discord)
+
+      const embed = new MessageEmbed();
+      embed.addFields(discord);
+      console.log(embed)
+
     })
   )
 
