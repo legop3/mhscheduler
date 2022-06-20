@@ -61,8 +61,8 @@ cron.schedule('0 0 * * MON', () => {
     
   });
 
-
-cron.schedule('0 0 * * *', () => {
+// 0 0 * * *
+cron.schedule('* * * * *', () => {
   console.log("running the fuckuing thing to fuck your mom")
 
 
