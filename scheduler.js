@@ -22,7 +22,7 @@ const fs = require('fs');
 
 
 client.once('ready', () => {
-	console.log('Ready!');
+	console.log('discord logged in!');
 });
 
 // exec("konsole")
@@ -53,7 +53,7 @@ cron.schedule('0 0 * * FRI', () => {
   //    cp /home/brody/eventquests/* /home/brody/serverfiles/Erpue/bin/quests
   friday()
 
-
+  client.channels.cache.get('988518834304610304').send('the Raviente event is now happening!')
 });
 
 
@@ -66,11 +66,12 @@ cron.schedule('0 0 * * MON', () => {
     // exec("cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests -v")
     monday()
   
+    client.channels.cache.get('988518834304610304').send('the Raviente event is no longer happening!')
     
   });
 
 // 0 0 * * *
-cron.schedule('* * * * *', () => {
+cron.schedule('0 0 * * *', () => {
   console.log("running the fuckuing thing to fuck your mom")
 
 
