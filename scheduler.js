@@ -2,6 +2,9 @@ var cron = require('node-cron');
 // var sudo = require('sudo-js');
 const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
+const { Client, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
 //also install module "uuid"
 
 
@@ -16,6 +19,11 @@ const { stderr, stdout } = require('process');
 //     console.log('password valid : ', valid);
 // });
 
+
+
+client.once('ready', () => {
+	console.log('Ready!');
+});
 
 // exec("konsole")
 exec('konsole -e "tmuxinator start gameserver"')
@@ -71,3 +79,5 @@ cron.schedule('* * * * *', () => {
     .then(console.log(stdout))
 
 })
+
+client.login(process.env.TOKEN)
