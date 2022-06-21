@@ -71,26 +71,132 @@ cron.schedule('0 0 * * MON', () => {
   });
 
 // 0 0 * * *
-cron.schedule('0 0 * * *', () => {
+cron.schedule('* * * * *', () => {
   console.log("running thescript to randomize")
 
 
-  exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
-  // execSync('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
+ // exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
+   execSync('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
 
-  // .then(
-  //   fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
-  //     if (err) throw err;
-  //     // let discord = JSON.parse(data)
-  //     // console.log(discord)
+   .then(
+     fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
 
-  //     // const embed = new MessageEmbed();
-  //     // embed.addFields(discord);
-  //     // console.log(embed)
-  //     // client.channels.cache.get('988518785940082768').send(discord.toString())
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
 
-  //   })
-  // )
+     })
+   )
+  .then(
+     fs.readFile('/home/brody/mhrandomizer/discord2.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
+
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
+
+     })
+   )
+  .then(
+     fs.readFile('/home/brody/mhrandomizer/discord3.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
+
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
+
+     })
+   )
+  .then(
+     fs.readFile('/home/brody/mhrandomizer/discord4.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
+
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
+
+     })
+   )
+  .then(
+     fs.readFile('/home/brody/mhrandomizer/discord5.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
+
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
+
+     })
+   )
+  .then(
+     fs.readFile('/home/brody/mhrandomizer/discord6.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
+
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
+
+     })
+   )
+  .then(
+     fs.readFile('/home/brody/mhrandomizer/discord7.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
+
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
+
+     })
+   )
+  .then(
+     fs.readFile('/home/brody/mhrandomizer/discord8.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
+
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
+
+     })
+   )
+  .then(
+     fs.readFile('/home/brody/mhrandomizer/discord9.json', (err, data) => {
+       if (err) throw err;
+        let discord = JSON.parse(data)
+        console.log(discord)
+
+        const embed = new MessageEmbed();
+        embed.addFields(discord);
+        console.log(embed)
+        client.channels.cache.get('988518785940082768').send(discord.toString())
+
+     })
+   )
+
+
 
 
   
