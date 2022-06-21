@@ -53,20 +53,26 @@ cron.schedule('* * * * *', () => {
   //    cp /home/brody/eventquests/* /home/brody/serverfiles/Erpue/bin/quests
   friday()
 
+  client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
+    client.channels.cache.get('988518785940082768').bulkDelete(fetched)});
+
   client.channels.cache.get('988518834304610304').send('the Raviente event is now happening!')
 });
 
 
 //  0 0 * * MON
 //every monday at midnight
-cron.schedule('* * * * *', () => {
+cron.schedule('0 0 * * MON', () => {
     console.log('its monday and i');
     //move original quests into quest folder
     //    cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests
     // exec("cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests -v")
     monday()
-  
-    client.channels.cache.get('988518834304610304').send('the Raviente event is no longer happening!')
+   
+    client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
+      client.channels.cache.get('988518785940082768').bulkDelete(fetched)}); 
+
+    client.channels.cache.get('988518834304610304').send('the Raviente event is currently inactive.')
     
   });
 
