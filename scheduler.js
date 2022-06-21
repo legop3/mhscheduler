@@ -91,9 +91,9 @@ cron.schedule('* * * * *', () => {
         client.channels.cache.get('988518785940082768').send(discord1.toString())
 
      })
-   )
-  .then(
-     fs.readFile('/home/brody/mhrandomizer/discord2.json', (err, data) => {
+   
+  
+     ,fs.readFile('/home/brody/mhrandomizer/discord2.json', (err, data) => {
        if (err) throw err;
         let discord2 = JSON.parse(data)
         console.log(discord2)
@@ -104,9 +104,9 @@ cron.schedule('* * * * *', () => {
         client.channels.cache.get('988518785940082768').send(discord2.toString())
 
      })
-   )
-  .then(
-     fs.readFile('/home/brody/mhrandomizer/discord3.json', (err, data) => {
+   
+  
+     ,fs.readFile('/home/brody/mhrandomizer/discord3.json', (err, data) => {
        if (err) throw err;
         let discord3 = JSON.parse(data)
         console.log(discord3)
@@ -117,9 +117,9 @@ cron.schedule('* * * * *', () => {
         client.channels.cache.get('988518785940082768').send(discord3.toString())
 
      })
-   )
-  .then(
-     fs.readFile('/home/brody/mhrandomizer/discord4.json', (err, data) => {
+   
+  
+     ,fs.readFile('/home/brody/mhrandomizer/discord4.json', (err, data) => {
        if (err) throw err;
         let discord4 = JSON.parse(data)
         console.log(discord4)
@@ -130,9 +130,9 @@ cron.schedule('* * * * *', () => {
         client.channels.cache.get('988518785940082768').send(discord4.toString())
 
      })
-   )
-  .then(
-     fs.readFile('/home/brody/mhrandomizer/discord5.json', (err, data) => {
+   
+  
+     ,fs.readFile('/home/brody/mhrandomizer/discord5.json', (err, data) => {
        if (err) throw err;
         let discord5 = JSON.parse(data)
         console.log(discord5)
@@ -143,9 +143,9 @@ cron.schedule('* * * * *', () => {
         client.channels.cache.get('988518785940082768').send(discord5.toString())
 
      })
-   )
-  .then(
-     fs.readFile('/home/brody/mhrandomizer/discord6.json', (err, data) => {
+   
+  
+     ,fs.readFile('/home/brody/mhrandomizer/discord6.json', (err, data) => {
        if (err) throw err;
         let discord6 = JSON.parse(data)
         console.log(discord6)
@@ -156,9 +156,9 @@ cron.schedule('* * * * *', () => {
         client.channels.cache.get('988518785940082768').send(discord6.toString())
 
      })
-   )
-  .then(
-     fs.readFile('/home/brody/mhrandomizer/discord7.json', (err, data) => {
+   
+  
+     ,fs.readFile('/home/brody/mhrandomizer/discord7.json', (err, data) => {
        if (err) throw err;
         let discord7 = JSON.parse(data)
         console.log(discord7)
@@ -169,9 +169,9 @@ cron.schedule('* * * * *', () => {
         client.channels.cache.get('988518785940082768').send(discord7.toString())
 
      })
-   )
-  .then(
-     fs.readFile('/home/brody/mhrandomizer/discord8.json', (err, data) => {
+   
+  
+     ,fs.readFile('/home/brody/mhrandomizer/discord8.json', (err, data) => {
        if (err) throw err;
         let discord8 = JSON.parse(data)
         console.log(discord8)
@@ -182,9 +182,9 @@ cron.schedule('* * * * *', () => {
         client.channels.cache.get('988518785940082768').send(discord8.toString())
 
      })
-   )
-  .then(
-     fs.readFile('/home/brody/mhrandomizer/discord9.json', (err, data) => {
+   
+  
+     ,fs.readFile('/home/brody/mhrandomizer/discord9.json', (err, data) => {
        if (err) throw err;
         let discord9 = JSON.parse(data)
         console.log(discord9)
