@@ -82,7 +82,6 @@ cron.schedule('* * * * *', () => {
   client.channels.cache.get('988518785940082768').bulkDelete(amount).catch(err => {
     client.channels.cache.get('988518785940082768').send(':x: Due to Discord Limitations, I cannot delete messages older than 14 days') })
 
-  let msg = await client.channels.cache.get('988518785940082768').send(`Deleted \`${amount}\` messages`)
   setTimeout(() => {
       msg.delete()
   }, 2000)
