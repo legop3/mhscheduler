@@ -74,7 +74,18 @@ cron.schedule('0 0 * * MON', () => {
 cron.schedule('* * * * *', () => {
   console.log("running thescript to randomize")
 
+  var amount = parseInt(args[0])
 
+  if (!amount) return client.channels.cache.get('988518785940082768').send(10)
+  if (amount > 100 || amount < 1) return client.channels.cache.get('988518785940082768').send(10)
+
+  client.channels.cache.get('988518785940082768').bulkDelete(amount).catch(err => {
+    client.channels.cache.get('988518785940082768').send(':x: Due to Discord Limitations, I cannot delete messages older than 14 days') })
+
+  let msg = await client.channels.cache.get('988518785940082768').send(`Deleted \`${amount}\` messages`)
+  setTimeout(() => {
+      msg.delete()
+  }, 2000)
 
 
  // exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
