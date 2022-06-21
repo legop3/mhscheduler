@@ -80,7 +80,8 @@ cron.schedule('* * * * *', () => {
 
    .then(
      fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
-       if (err) throw err;
+      console.log(data) 
+      if (err) throw err;
         let discord = JSON.parse(data)
         console.log(discord)
 
