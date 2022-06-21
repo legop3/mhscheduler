@@ -88,7 +88,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord1);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord1.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    
@@ -101,7 +101,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord2);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord2.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    
@@ -114,7 +114,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord3);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord3.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    
@@ -127,7 +127,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord4);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord4.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    
@@ -140,7 +140,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord5);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord5.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    
@@ -153,7 +153,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord6);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord6.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    
@@ -166,7 +166,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord7);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord7.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    
@@ -179,7 +179,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord8);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord8.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    
@@ -192,7 +192,7 @@ cron.schedule('* * * * *', () => {
         const embed = new MessageEmbed();
         embed.addFields(discord9);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord9.toString())
+        client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
    )
