@@ -74,8 +74,8 @@ cron.schedule('0 0 * * MON', () => {
 cron.schedule('* * * * *', () => {
   console.log("running thescript to randomize")
 
-  client.channels.cache.get(988518785940082768).messages.fetch().then(fetched => {
-    client.channels.cache.get(988518785940082768).bulkDelete(fetched)});
+  client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
+    client.channels.cache.get('988518785940082768').bulkDelete(fetched)});
 
 
  // exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
