@@ -74,6 +74,10 @@ cron.schedule('0 0 * * MON', () => {
 cron.schedule('* * * * *', () => {
   console.log("running thescript to randomize")
 
+  channel.bulkDelete(200)
+  .then(messages => console.log(`Bulk deleted ${messages.size} messages`))
+  .catch(console.error);
+
 
  // exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
    execSync('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
