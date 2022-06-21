@@ -82,117 +82,117 @@ cron.schedule('* * * * *', () => {
      fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
       console.log(data) 
       if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord1 = JSON.parse(data)
+        console.log(discord1)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord1);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord1.toString())
 
      })
    )
   .then(
      fs.readFile('/home/brody/mhrandomizer/discord2.json', (err, data) => {
        if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord2 = JSON.parse(data)
+        console.log(discord2)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord2);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord2.toString())
 
      })
    )
   .then(
      fs.readFile('/home/brody/mhrandomizer/discord3.json', (err, data) => {
        if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord3 = JSON.parse(data)
+        console.log(discord3)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord3);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord3.toString())
 
      })
    )
   .then(
      fs.readFile('/home/brody/mhrandomizer/discord4.json', (err, data) => {
        if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord4 = JSON.parse(data)
+        console.log(discord4)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord4);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord4.toString())
 
      })
    )
   .then(
      fs.readFile('/home/brody/mhrandomizer/discord5.json', (err, data) => {
        if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord5 = JSON.parse(data)
+        console.log(discord5)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord5);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord5.toString())
 
      })
    )
   .then(
      fs.readFile('/home/brody/mhrandomizer/discord6.json', (err, data) => {
        if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord6 = JSON.parse(data)
+        console.log(discord6)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord6);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord6.toString())
 
      })
    )
   .then(
      fs.readFile('/home/brody/mhrandomizer/discord7.json', (err, data) => {
        if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord7 = JSON.parse(data)
+        console.log(discord7)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord7);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord7.toString())
 
      })
    )
   .then(
      fs.readFile('/home/brody/mhrandomizer/discord8.json', (err, data) => {
        if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord8 = JSON.parse(data)
+        console.log(discord8)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord8);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord8.toString())
 
      })
    )
   .then(
      fs.readFile('/home/brody/mhrandomizer/discord9.json', (err, data) => {
        if (err) throw err;
-        let discord = JSON.parse(data)
-        console.log(discord)
+        let discord9 = JSON.parse(data)
+        console.log(discord9)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord);
+        embed.addFields(discord9);
         console.log(embed)
-        client.channels.cache.get('988518785940082768').send(discord.toString())
+        client.channels.cache.get('988518785940082768').send(discord9.toString())
 
      })
    )
