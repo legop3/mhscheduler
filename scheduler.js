@@ -74,10 +74,7 @@ cron.schedule('0 0 * * MON', () => {
 cron.schedule('* * * * *', () => {
   console.log("running thescript to randomize")
 
-  client.channels.cache.get('988518785940082768').fetchMessages()
-  .then(messages => messages.array().forEach(
-      message => message.author.equals(client.user) && message.delete()
-  ));
+
 
 
  // exec('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
