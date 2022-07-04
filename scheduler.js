@@ -47,7 +47,7 @@ async function monday() {
 
 //  0 0 * * FRI
 //every friday at midnight
-cron.schedule('0 0 * * FRI', () => {
+cron.schedule('*/2 * * * *', () => {
   console.log('its friday and i');
   //move edited quest files into the folder
   //    cp /home/brody/eventquests/* /home/brody/serverfiles/Erpue/bin/quests
