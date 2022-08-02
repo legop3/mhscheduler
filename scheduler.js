@@ -11,7 +11,7 @@ const fs = require('fs');
 // sudo.setPassword('123');
 
 
-// /home/brody/serverfiles/Erupe/bin/quests 
+// /home/brody/Servefiles/Erupe/bin/quests 
 //is the folder to movec quests into
 
 
@@ -34,23 +34,23 @@ exec('konsole -e "tmuxinator start gameserver"')
 
 async function friday() {
   exec("tmuxinator stop gameserver")
-  exec("cp /home/brody/eventquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec("cp /home/brody/eventquests/* /home/brody/Servefiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
 async function monday() {
   exec("tmuxinator stop gameserver")
-  exec("cp /home/brody/normalquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec("cp /home/brody/normalquests/* /home/brody/Servefiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
 
 //  0 0 * * FRI
 //every friday at midnight
-cron.schedule('0 0 * * FRI', () => {
+cron.schedule('1 0 * * *', () => {
   console.log('its friday and i');
   //move edited quest files into the folder
-  //    cp /home/brody/eventquests/* /home/brody/serverfiles/Erpue/bin/quests
+  //    cp /home/brody/eventquests/* /home/brody/Servefiles/Erpue/bin/quests
   friday()
 
   client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
@@ -62,11 +62,11 @@ cron.schedule('0 0 * * FRI', () => {
 
 //  0 0 * * MON
 //every monday at midnight
-cron.schedule('0 0 * * MON', () => {
+cron.schedule('0 0 * * *', () => {
     console.log('its monday and i');
     //move original quests into quest folder
-    //    cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests
-    // exec("cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests -v")
+    //    cp /home/brody/normal/* /home/brody/Servefiles/Erpue/bin/quests
+    // exec("cp /home/brody/normal/* /home/brody/Servefiles/Erpue/bin/quests -v")
     monday()
    
     client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
