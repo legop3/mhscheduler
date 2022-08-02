@@ -11,7 +11,7 @@ const fs = require('fs');
 // sudo.setPassword('123');
 
 
-// /home/brody/Servefiles/Erupe/bin/quests 
+// /home/brody/Serverfiles/Erupe/bin/quests 
 //is the folder to movec quests into
 
 
@@ -34,13 +34,13 @@ exec('konsole -e "tmuxinator start gameserver"')
 
 async function friday() {
   exec("tmuxinator stop gameserver")
-  exec("cp /home/brody/eventquests/* /home/brody/Servefiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
 async function monday() {
   exec("tmuxinator stop gameserver")
-  exec("cp /home/brody/normalquests/* /home/brody/Servefiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
@@ -50,7 +50,7 @@ async function monday() {
 cron.schedule('15 16 * * *', () => {
   console.log('its friday and i');
   //move edited quest files into the folder
-  //    cp /home/brody/eventquests/* /home/brody/Servefiles/Erpue/bin/quests
+  //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
   friday()
 
   client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
@@ -65,8 +65,8 @@ cron.schedule('15 16 * * *', () => {
 cron.schedule('16 16 * * *', () => {
     console.log('its monday and i');
     //move original quests into quest folder
-    //    cp /home/brody/normal/* /home/brody/Servefiles/Erpue/bin/quests
-    // exec("cp /home/brody/normal/* /home/brody/Servefiles/Erpue/bin/quests -v")
+    //    cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests
+    // exec("cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests -v")
     monday()
    
     client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
