@@ -71,6 +71,8 @@ cron.schedule('*/2 * * * *', () => {
     client.channels.cache.get('988518834304610304').bulkDelete(fetched)});
 
   client.channels.cache.get('988518834304610304').send('The Raviente event is now happening!')
+  console.log('which one?')
+  exec("cat /home/brody/Serverfiles/Erupe/bin/quests/whichone", (err, stdout, stderr) => {console.log(stdout)})
 
 });
 
@@ -107,7 +109,8 @@ cron.schedule('*/5 * * * *', () => {
     client.channels.cache.get('988518834304610304').send('The Raviente event is currently inactive.')
     
 
-    
+    console.log('which one?')
+    exec("cat /home/brody/Serverfiles/Erupe/bin/quests/whichone", (err, stdout, stderr) => {console.log(stdout)})
 
   });
 
