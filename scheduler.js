@@ -137,7 +137,7 @@ cron.schedule('* * * * *', () => {
         // console.log(discord3)
 
         const embed = new MessageEmbed();
-        // embed.addFields(discord3);
+        embed.addFields(discord3);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
