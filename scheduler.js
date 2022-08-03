@@ -55,9 +55,9 @@ cron.schedule('*/2 * * * *', () => {
 
 
   async function friday() {
-    exec("tmuxinator stop gameserver")
+    execSync("tmuxinator stop gameserver")
     console.log('stopped game server')
-    exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+    execSync("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
     console.log('copied friday')
     exec('konsole -e "tmuxinator start gameserver"')
     console.log('started gameserver')
@@ -87,9 +87,9 @@ cron.schedule('*/5 * * * *', () => {
 
     async function monday() {
       
-      exec("tmuxinator stop gameserver")
+      execSync("tmuxinator stop gameserver")
       console.log('stopped game server')
-      exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+      execSync("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
       console.log('copied monday')
       exec('konsole -e "tmuxinator start gameserver"')
       console.log('started gameserver')
