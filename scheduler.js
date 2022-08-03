@@ -56,10 +56,10 @@ cron.schedule('40 * * * *', () => {
   client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
     client.channels.cache.get('988518834304610304').bulkDelete(fetched)});
 
-  client.channels.cache.get('988518834304610304').send('the Raviente event is now happening!')
+  client.channels.cache.get('988518834304610304').send('The Raviente event is now happening!')
 });
 
-
+//pee poop
 //  0 0 * * MON
 //every monday at midnight
 cron.schedule('41 * * * *', () => {
@@ -72,7 +72,7 @@ cron.schedule('41 * * * *', () => {
     client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
       client.channels.cache.get('988518834304610304').bulkDelete(fetched)}); 
 
-    client.channels.cache.get('988518834304610304').send('the Raviente event is currently inactive.')
+    client.channels.cache.get('988518834304610304').send('The Raviente event is currently inactive.')
     
   });
 
