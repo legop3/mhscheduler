@@ -47,7 +47,11 @@ async function monday() {
 
 //  0 0 * * FRI
 //every friday at midnight
+<<<<<<< HEAD
+cron.schedule('*/3 * * * *', () => {
+=======
 cron.schedule('40 * * * *', () => {
+>>>>>>> 3a16de87df3e0d3607d1b9b4b39850e6730163c5
   console.log('its friday and i');
   //move edited quest files into the folder
   //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
@@ -62,7 +66,11 @@ cron.schedule('40 * * * *', () => {
 //pee poop
 //  0 0 * * MON
 //every monday at midnight
+<<<<<<< HEAD
+cron.schedule('*/2 * * * *', () => {
+=======
 cron.schedule('41 * * * *', () => {
+>>>>>>> 3a16de87df3e0d3607d1b9b4b39850e6730163c5
     console.log('its monday and i');
     //move original quests into quest folder
     //    cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests
@@ -77,7 +85,11 @@ cron.schedule('41 * * * *', () => {
   });
 
 // 0 0 * * *
+<<<<<<< HEAD
+cron.schedule('* * * * *', () => {
+=======
 cron.schedule('41 * * * *', () => {
+>>>>>>> 3a16de87df3e0d3607d1b9b4b39850e6730163c5
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
