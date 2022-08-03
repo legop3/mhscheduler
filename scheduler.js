@@ -32,17 +32,17 @@ exec('konsole -e "tmuxinator start gameserver"')
 
 
 
-async function friday() {
-  exec("tmuxinator stop gameserver")
-  exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
-  exec('konsole -e "tmuxinator start gameserver"')
-}
+// async function friday() {
+//   exec("tmuxinator stop gameserver")
+//   exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+//   exec('konsole -e "tmuxinator start gameserver"')
+// }
 
-async function monday() {
-  exec("tmuxinator stop gameserver")
-  exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
-  exec('konsole -e "tmuxinator start gameserver"')
-}
+// async function monday() {
+//   exec("tmuxinator stop gameserver")
+//   exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+//   exec('konsole -e "tmuxinator start gameserver"')
+// }
 
 
 //  0 0 * * FRI
@@ -58,6 +58,12 @@ cron.schedule('* * * * *', () => {
     client.channels.cache.get('988518834304610304').bulkDelete(fetched)});
 
   client.channels.cache.get('988518834304610304').send('The Raviente event is now happening!')
+
+  async function friday() {
+    exec("tmuxinator stop gameserver")
+    exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+    exec('konsole -e "tmuxinator start gameserver"')
+  }
 });
 
 //pee poop
@@ -76,6 +82,13 @@ cron.schedule('*/5 * * * *', () => {
 
     client.channels.cache.get('988518834304610304').send('The Raviente event is currently inactive.')
     
+    async function monday() {
+      exec("tmuxinator stop gameserver")
+      exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+      exec('konsole -e "tmuxinator start gameserver"')
+    }
+    
+
   });
 
 // 0 0 * * *
