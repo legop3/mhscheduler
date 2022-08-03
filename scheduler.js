@@ -48,10 +48,23 @@ exec('konsole -e "tmuxinator start gameserver"')
 //  0 0 * * FRI
 //every friday at midnight
 
-cron.schedule('* * * * *', () => {
+cron.schedule('*/2 * * * *', () => {
   console.log('its friday and i');
   //move edited quest files into the folder
   //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
+
+
+  async function friday() {
+    exec("tmuxinator stop gameserver")
+    console.log('stopped game server')
+    exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+    console.log('copied friday')
+    exec('konsole -e "tmuxinator start gameserver"')
+    console.log('started gameserver')
+  }
+
+
+  console.log('friday, before restarting')
   friday()
 
   client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
@@ -59,11 +72,6 @@ cron.schedule('* * * * *', () => {
 
   client.channels.cache.get('988518834304610304').send('The Raviente event is now happening!')
 
-  async function friday() {
-    exec("tmuxinator stop gameserver")
-    exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
-    exec('konsole -e "tmuxinator start gameserver"')
-  }
 });
 
 //pee poop
@@ -72,9 +80,25 @@ cron.schedule('* * * * *', () => {
 
 cron.schedule('*/5 * * * *', () => {
     console.log('its monday and i');
+
     //move original quests into quest folder
     //    cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests
     // exec("cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests -v")
+
+    async function monday() {
+      
+      exec("tmuxinator stop gameserver")
+      console.log('stopped game server')
+      exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+      console.log('copied monday')
+      exec('konsole -e "tmuxinator start gameserver"')
+      console.log('started gameserver')
+    }
+
+
+
+
+    console.log('monday, before restarting')
     monday()
    
     client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
@@ -82,18 +106,14 @@ cron.schedule('*/5 * * * *', () => {
 
     client.channels.cache.get('988518834304610304').send('The Raviente event is currently inactive.')
     
-    async function monday() {
-      exec("tmuxinator stop gameserver")
-      exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
-      exec('konsole -e "tmuxinator start gameserver"')
-    }
+
     
 
   });
 
 // 0 0 * * *
 
-cron.schedule('* * * * *', () => {
+cron.schedule('0 0 * * *', () => {
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
@@ -105,7 +125,7 @@ cron.schedule('* * * * *', () => {
 
    .then(
      fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
-      console.log(data) 
+      // console.log(data) 
       if (err) throw err;
         let discord1 = JSON.parse(data)
         // console.log(discord1)
