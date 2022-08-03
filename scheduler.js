@@ -48,7 +48,7 @@ exec('konsole -e "tmuxinator start gameserver"')
 //  0 0 * * FRI
 //every friday at midnight
 
-cron.schedule('*/2 * * * *', () => {
+cron.schedule('1/2 * * * *', () => {
   console.log('its friday and i');
   //move edited quest files into the folder
   //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
@@ -78,7 +78,7 @@ cron.schedule('*/2 * * * *', () => {
 //  0 0 * * MON
 //every monday at midnight
 
-cron.schedule('*/5 * * * *', () => {
+cron.schedule('*/2 * * * *', () => {
     console.log('its monday and i');
 
     //move original quests into quest folder
