@@ -108,11 +108,11 @@ cron.schedule('* * * * *', () => {
       console.log(data) 
       if (err) throw err;
         let discord1 = JSON.parse(data)
-        console.log(discord1)
+        // console.log(discord1)
 
         const embed = new MessageEmbed();
         embed.addFields(discord1);
-        console.log(embed)
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
@@ -121,11 +121,11 @@ cron.schedule('* * * * *', () => {
      ,fs.readFile('/home/brody/mhrandomizer/discord2.json', (err, data) => {
        if (err) throw err;
         let discord2 = JSON.parse(data)
-        console.log(discord2)
+        // console.log(discord2)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord2);
-        console.log(embed)
+        // embed.addFields(discord2);
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
@@ -134,11 +134,11 @@ cron.schedule('* * * * *', () => {
      ,fs.readFile('/home/brody/mhrandomizer/discord3.json', (err, data) => {
        if (err) throw err;
         let discord3 = JSON.parse(data)
-        console.log(discord3)
+        // console.log(discord3)
 
         const embed = new MessageEmbed();
-        embed.addFields(discord3);
-        console.log(embed)
+        // embed.addFields(discord3);
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
@@ -147,11 +147,11 @@ cron.schedule('* * * * *', () => {
      ,fs.readFile('/home/brody/mhrandomizer/discord4.json', (err, data) => {
        if (err) throw err;
         let discord4 = JSON.parse(data)
-        console.log(discord4)
+        // console.log(discord4)
 
         const embed = new MessageEmbed();
         embed.addFields(discord4);
-        console.log(embed)
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
@@ -160,11 +160,11 @@ cron.schedule('* * * * *', () => {
      ,fs.readFile('/home/brody/mhrandomizer/discord5.json', (err, data) => {
        if (err) throw err;
         let discord5 = JSON.parse(data)
-        console.log(discord5)
+        // console.log(discord5)
 
         const embed = new MessageEmbed();
         embed.addFields(discord5);
-        console.log(embed)
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
@@ -173,11 +173,11 @@ cron.schedule('* * * * *', () => {
      ,fs.readFile('/home/brody/mhrandomizer/discord6.json', (err, data) => {
        if (err) throw err;
         let discord6 = JSON.parse(data)
-        console.log(discord6)
+        // console.log(discord6)
 
         const embed = new MessageEmbed();
         embed.addFields(discord6);
-        console.log(embed)
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
@@ -186,11 +186,11 @@ cron.schedule('* * * * *', () => {
      ,fs.readFile('/home/brody/mhrandomizer/discord7.json', (err, data) => {
        if (err) throw err;
         let discord7 = JSON.parse(data)
-        console.log(discord7)
+        // console.log(discord7)
 
         const embed = new MessageEmbed();
         embed.addFields(discord7);
-        console.log(embed)
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
@@ -199,11 +199,11 @@ cron.schedule('* * * * *', () => {
      ,fs.readFile('/home/brody/mhrandomizer/discord8.json', (err, data) => {
        if (err) throw err;
         let discord8 = JSON.parse(data)
-        console.log(discord8)
+        // console.log(discord8)
 
         const embed = new MessageEmbed();
         embed.addFields(discord8);
-        console.log(embed)
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
@@ -212,11 +212,11 @@ cron.schedule('* * * * *', () => {
      ,fs.readFile('/home/brody/mhrandomizer/discord9.json', (err, data) => {
        if (err) throw err;
         let discord9 = JSON.parse(data)
-        console.log(discord9)
+        // console.log(discord9)
 
         const embed = new MessageEmbed();
         embed.addFields(discord9);
-        console.log(embed)
+        // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
 
      })
