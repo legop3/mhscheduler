@@ -11,7 +11,7 @@ const fs = require('fs');
 // sudo.setPassword('123');
 
 
-// /home/brody/serverfiles/Erupe/bin/quests 
+// /home/brody/Serverfiles/Erupe/bin/quests 
 //is the folder to movec quests into
 
 
@@ -34,23 +34,27 @@ exec('konsole -e "tmuxinator start gameserver"')
 
 async function friday() {
   exec("tmuxinator stop gameserver")
-  exec("cp /home/brody/eventquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
 async function monday() {
   exec("tmuxinator stop gameserver")
-  exec("cp /home/brody/normalquests/* /home/brody/serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
   exec('konsole -e "tmuxinator start gameserver"')
 }
 
 
 //  0 0 * * FRI
 //every friday at midnight
+<<<<<<< HEAD
 cron.schedule('*/3 * * * *', () => {
+=======
+cron.schedule('40 * * * *', () => {
+>>>>>>> 3a16de87df3e0d3607d1b9b4b39850e6730163c5
   console.log('its friday and i');
   //move edited quest files into the folder
-  //    cp /home/brody/eventquests/* /home/brody/serverfiles/Erpue/bin/quests
+  //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
   friday()
 
   client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
@@ -62,11 +66,15 @@ cron.schedule('*/3 * * * *', () => {
 
 //  0 0 * * MON
 //every monday at midnight
+<<<<<<< HEAD
 cron.schedule('*/2 * * * *', () => {
+=======
+cron.schedule('41 * * * *', () => {
+>>>>>>> 3a16de87df3e0d3607d1b9b4b39850e6730163c5
     console.log('its monday and i');
     //move original quests into quest folder
-    //    cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests
-    // exec("cp /home/brody/normal/* /home/brody/serverfiles/Erpue/bin/quests -v")
+    //    cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests
+    // exec("cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests -v")
     monday()
    
     client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
@@ -77,7 +85,11 @@ cron.schedule('*/2 * * * *', () => {
   });
 
 // 0 0 * * *
+<<<<<<< HEAD
 cron.schedule('* * * * *', () => {
+=======
+cron.schedule('41 * * * *', () => {
+>>>>>>> 3a16de87df3e0d3607d1b9b4b39850e6730163c5
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
