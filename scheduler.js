@@ -116,7 +116,7 @@ cron.schedule('30 0 * * 7,2', () => {
 
 // 0 0 * * *
 
-cron.schedule('0 0 * * *', () => {
+cron.schedule('55 19 * * *', () => {
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
