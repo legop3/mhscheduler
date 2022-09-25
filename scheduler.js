@@ -48,18 +48,18 @@ async function monday() {
 //  0 0 * * FRI
 //every friday at midnight
 
-cron.schedule('32 16 * * *', () => {
+cron.schedule('37 16 * * *', () => {
   console.log('its friday and i');
   //move edited quest files into the folder
   //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
 
 
   async function friday() {
-    execSync("tmuxinator stop gameserver")
+    //execSync("tmuxinator stop gameserver")
     console.log('stopped game server')
-    execSync("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+    //execSync("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
     console.log('copied friday')
-    exec('konsole -e "tmuxinator start gameserver"')
+    //exec('konsole -e "tmuxinator start gameserver"')
     console.log('started gameserver')
   }
 
@@ -80,7 +80,7 @@ cron.schedule('32 16 * * *', () => {
 //  0 0 * * MON
 //every monday at midnight
 
-cron.schedule('33 16 * * *', () => {
+cron.schedule('38 16 * * *', () => {
     console.log('its monday and i');
 
     //move original quests into quest folder
@@ -89,11 +89,11 @@ cron.schedule('33 16 * * *', () => {
 
     async function monday() {
       
-      execSync("tmuxinator stop gameserver")
+      //execSync("tmuxinator stop gameserver")
       console.log('stopped game server')
-      execSync("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+      //execSync("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
       console.log('copied monday')
-      exec('konsole -e "tmuxinator start gameserver"')
+      //exec('konsole -e "tmuxinator start gameserver"')
       console.log('started gameserver')
     }
 
@@ -116,7 +116,7 @@ cron.schedule('33 16 * * *', () => {
 
 // 0 0 * * *
 
-cron.schedule('34 16 * * *', () => {
+cron.schedule('39 16 * * *', () => {
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
