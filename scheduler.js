@@ -11,7 +11,7 @@ const fs = require('fs');
 // sudo.setPassword('123');
 
 
-// /home/brody/Serverfiles/Erupe/bin/quests 
+/ /home/brody/Serverfiles/Erupe/bin/quests 
 //is the folder to movec quests into
 
 
