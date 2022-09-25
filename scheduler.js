@@ -7,7 +7,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fs = require('fs');
 //also install module "uuid"
 
-
+//
 // sudo.setPassword('123');
 
 
