@@ -48,7 +48,7 @@ async function monday() {
 //  0 0 * * FRI
 //every friday at midnight
 
-cron.schedule('30 0 * * 6,1', () => {
+cron.schedule('32 16 * * *', () => {
   console.log('its friday and i');
   //move edited quest files into the folder
   //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
@@ -80,7 +80,7 @@ cron.schedule('30 0 * * 6,1', () => {
 //  0 0 * * MON
 //every monday at midnight
 
-cron.schedule('30 0 * * 7,2', () => {
+cron.schedule('33 16 * * *', () => {
     console.log('its monday and i');
 
     //move original quests into quest folder
@@ -116,7 +116,7 @@ cron.schedule('30 0 * * 7,2', () => {
 
 // 0 0 * * *
 
-cron.schedule('0 0 * * *', () => {
+cron.schedule('34 16 * * *', () => {
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
