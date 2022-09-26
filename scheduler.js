@@ -3,7 +3,7 @@ var cron = require('node-cron');
 const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
 const { Client, Intents, MessageEmbed } = require('discord.js');
-// const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fs = require('fs');
 //also install module "uuid"
 
@@ -55,11 +55,11 @@ cron.schedule('37 16 * * *', () => {
 
 
   async function friday() {
-    //execSync("tmuxinator stop gameserver")
+    execSync("tmuxinator stop gameserver")
     console.log('stopped game server')
-    //execSync("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+    execSync("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
     console.log('copied friday')
-    //exec('konsole -e "tmuxinator start gameserver"')
+    exec('konsole -e "tmuxinator start gameserver"')
     console.log('started gameserver')
   }
 
@@ -89,11 +89,11 @@ cron.schedule('38 16 * * *', () => {
 
     async function monday() {
       
-      //execSync("tmuxinator stop gameserver")
+      execSync("tmuxinator stop gameserver")
       console.log('stopped game server')
-      //execSync("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+      execSync("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
       console.log('copied monday')
-      //exec('konsole -e "tmuxinator start gameserver"')
+      exec('konsole -e "tmuxinator start gameserver"')
       console.log('started gameserver')
     }
 
