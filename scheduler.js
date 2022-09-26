@@ -21,7 +21,7 @@ const fs = require('fs');
 
 
 
-client.once('ready', () => {
+Client.once('ready', () => {
 	console.log('discord logged in!');
 });
 
@@ -255,4 +255,4 @@ cron.schedule('0 0 * * *', () => {
 
 })
 
-client.login(process.env.TOKEN)
+Client.login(process.env.TOKEN)
