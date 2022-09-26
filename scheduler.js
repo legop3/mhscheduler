@@ -1,9 +1,10 @@
 var cron = require('node-cron');
 // var sudo = require('sudo-js');
+const { MessageEmbed } = require('discord.js');
 const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
 const { Client, GatewayIntentBits } = require('discord.js');
-//const { token } = (process.env.TOKEN);
+const { token } = (process.env.TOKEN);
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const fs = require('fs');
 //also install module "uuid"
@@ -117,7 +118,7 @@ cron.schedule('38 16 * * *', () => {
 
 // 0 0 * * *
 
-cron.schedule('0 0 * * *', () => {
+cron.schedule('51 9 * * *', () => {
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
