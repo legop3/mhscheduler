@@ -255,4 +255,4 @@ cron.schedule('0 0 * * *', () => {
 
 })
 
-Client.login(process.env.TOKEN)
+client.login(process.env.TOKEN)
