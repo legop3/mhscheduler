@@ -118,7 +118,7 @@ cron.schedule('38 16 * * *', () => {
 
 // 0 0 * * *
 
-cron.schedule('19 10 * * *', () => {
+cron.schedule('30 10 * * *', () => {
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
@@ -135,7 +135,7 @@ cron.schedule('19 10 * * *', () => {
         let discord1 = JSON.parse(data)
         // console.log(discord1)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord1);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
@@ -148,7 +148,7 @@ cron.schedule('19 10 * * *', () => {
         let discord2 = JSON.parse(data)
         // console.log(discord2)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord2);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
@@ -161,7 +161,7 @@ cron.schedule('19 10 * * *', () => {
         let discord3 = JSON.parse(data)
         // console.log(discord3)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord3);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
@@ -174,7 +174,7 @@ cron.schedule('19 10 * * *', () => {
         let discord4 = JSON.parse(data)
         // console.log(discord4)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord4);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
@@ -187,7 +187,7 @@ cron.schedule('19 10 * * *', () => {
         let discord5 = JSON.parse(data)
         // console.log(discord5)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord5);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
@@ -200,7 +200,7 @@ cron.schedule('19 10 * * *', () => {
         let discord6 = JSON.parse(data)
         // console.log(discord6)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord6);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
@@ -213,7 +213,7 @@ cron.schedule('19 10 * * *', () => {
         let discord7 = JSON.parse(data)
         // console.log(discord7)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord7);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
@@ -226,7 +226,7 @@ cron.schedule('19 10 * * *', () => {
         let discord8 = JSON.parse(data)
         // console.log(discord8)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord8);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
@@ -239,7 +239,7 @@ cron.schedule('19 10 * * *', () => {
         let discord9 = JSON.parse(data)
         // console.log(discord9)
 
-        const embed = new discord.EmbedBuilder();
+        const embed = new EmbedBuilder();
         embed.addFields(discord9);
         // console.log(embed)
         client.channels.cache.get('988518785940082768').send({ embeds: [embed]});
