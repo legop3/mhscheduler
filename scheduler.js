@@ -118,7 +118,7 @@ exec('konsole -e "tmuxinator start gameserver"')
 
 // 0 0 * * *
 
-cron.schedule('38 11 * * *', () => {
+cron.schedule('53 11 * * *', () => {
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
@@ -129,7 +129,7 @@ cron.schedule('38 11 * * *', () => {
    execSync('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
 
    .then(
-     fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
+     fs.readFile('/home/brody/mhrandomizer/discord1.json', (err, data) => {
       // console.log(data) 
       if (err) throw err;
         let discord1 = JSON.parse(data)
