@@ -3,7 +3,7 @@ var cron = require('node-cron');
 const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
 const { GatewayIntentBits,Client, MessageEmbed } = require('discord.js');
-const { client } = new Client({ intents: [GatewayIntentBits.Guilds] });
+const { client } = new client({ intents: [GatewayIntentBits.Guilds] });
 const fs = require('fs');
 //also install module "uuid"
 
@@ -21,7 +21,7 @@ const fs = require('fs');
 
 
 
-Client.once('ready', () => {
+client.once('ready', () => {
 	console.log('discord logged in!');
 });
 
@@ -255,4 +255,4 @@ cron.schedule('0 0 * * *', () => {
 
 })
 
-Client.login(process.env.TOKEN)
+client.login(process.env.TOKEN)
