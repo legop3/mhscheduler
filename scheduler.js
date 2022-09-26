@@ -129,7 +129,7 @@ cron.schedule('* * * * *', () => {
    execSync('konsole --workdir /home/brody/mhrandomizer -e "node randomizer.js"')
 
    .then(
-     fs.readFile('/home/brody/mhrandomizer/discord.json', (err, data) => {
+     fs.readFile('/home/brody/mhrandomizer/discord1.json', (err, data) => {
       // console.log(data) 
       if (err) throw err;
         let discord1 = JSON.parse(data)
