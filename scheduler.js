@@ -21,7 +21,7 @@ const fs = require('fs');
 
 
 
-client.once('ready', () => {
+Client.once('ready', () => {
 	console.log('discord logged in!');
 });
 
