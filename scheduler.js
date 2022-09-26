@@ -3,12 +3,12 @@ var cron = require('node-cron');
 const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
 const { Client, Intents, MessageEmbed } = require('discord.js');
-// const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fs = require('fs');
 //also install module "uuid"
 
 
- sudo.setPassword('123');
+// sudo.setPassword('123');
 
 
 // /home/brody/Serverfiles/Erupe/bin/quests 
@@ -32,87 +32,87 @@ exec('konsole -e "tmuxinator start gameserver"')
 
 
 
-// async function friday() {
-//   exec("tmuxinator stop gameserver")
-//   exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
-//   exec('konsole -e "tmuxinator start gameserver"')
-// }
+async function friday() {
+  exec("tmuxinator stop gameserver")
+  exec("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec('konsole -e "tmuxinator start gameserver"')
+}
 
-// async function monday() {
-//   exec("tmuxinator stop gameserver")
-//   exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
-//   exec('konsole -e "tmuxinator start gameserver"')
-// }
+async function monday() {
+  exec("tmuxinator stop gameserver")
+  exec("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+  exec('konsole -e "tmuxinator start gameserver"')
+}
 
 
 //  0 0 * * FRI
 //every friday at midnight
 
-// cron.schedule('37 16 * * *', () => {
-//   console.log('its friday and i');
-//   //move edited quest files into the folder
-//   //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
+cron.schedule('37 16 * * *', () => {
+  console.log('its friday and i');
+  //move edited quest files into the folder
+  //    cp /home/brody/eventquests/* /home/brody/Serverfiles/Erpue/bin/quests
 
 
-//   async function friday() {
-//     //execSync("tmuxinator stop gameserver")
-//     console.log('stopped game server')
-//     //execSync("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
-//     console.log('copied friday')
-//     //exec('konsole -e "tmuxinator start gameserver"')
-//     console.log('started gameserver')
-//   }
+  async function friday() {
+    //execSync("tmuxinator stop gameserver")
+    console.log('stopped game server')
+    //execSync("cp /home/brody/eventquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+    console.log('copied friday')
+    //exec('konsole -e "tmuxinator start gameserver"')
+    console.log('started gameserver')
+  }
 
 
   console.log('friday, before restarting')
   friday()
 
-//   client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
-//     client.channels.cache.get('988518834304610304').bulkDelete(fetched)});
+  client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
+    client.channels.cache.get('988518834304610304').bulkDelete(fetched)});
 
-//   client.channels.cache.get('988518834304610304').send('The Raviente event is now happening!')
-//   console.log('which one?')
-//   exec("cat /home/brody/Serverfiles/Erupe/bin/quests/whichone", (err, stdout, stderr) => {console.log(stdout)})
+  client.channels.cache.get('988518834304610304').send('The Raviente event is now happening!')
+  console.log('which one?')
+  exec("cat /home/brody/Serverfiles/Erupe/bin/quests/whichone", (err, stdout, stderr) => {console.log(stdout)})
 
-// });
+});
 
 //pee poop
 //  0 0 * * MON
 //every monday at midnight
 
-// cron.schedule('38 16 * * *', () => {
-//     console.log('its monday and i');
+cron.schedule('38 16 * * *', () => {
+    console.log('its monday and i');
 
-//     //move original quests into quest folder
-//     //    cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests
-//     // exec("cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests -v")
+    //move original quests into quest folder
+    //    cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests
+    // exec("cp /home/brody/normal/* /home/brody/Serverfiles/Erpue/bin/quests -v")
 
-//     async function monday() {
+    async function monday() {
       
-//       //execSync("tmuxinator stop gameserver")
-//       console.log('stopped game server')
-//       //execSync("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
-//       console.log('copied monday')
-//       //exec('konsole -e "tmuxinator start gameserver"')
-//       console.log('started gameserver')
-//     }
+      //execSync("tmuxinator stop gameserver")
+      console.log('stopped game server')
+      //execSync("cp /home/brody/normalquests/* /home/brody/Serverfiles/Erupe/bin/quests -v", (err, stdout, stderr) => {console.log(stdout)})
+      console.log('copied monday')
+      //exec('konsole -e "tmuxinator start gameserver"')
+      console.log('started gameserver')
+    }
 
 
 
 
-  //   console.log('monday, before restarting')
-  //   monday()
+    console.log('monday, before restarting')
+    monday()
    
-  //   client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
-  //     client.channels.cache.get('988518834304610304').bulkDelete(fetched)}); 
+    client.channels.cache.get('988518834304610304').messages.fetch().then(fetched => {
+      client.channels.cache.get('988518834304610304').bulkDelete(fetched)}); 
 
-  //   client.channels.cache.get('988518834304610304').send('The Raviente event is currently inactive.')
+    client.channels.cache.get('988518834304610304').send('The Raviente event is currently inactive.')
     
 
-  //   console.log('which one?')
-  //   exec("cat /home/brody/Serverfiles/Erupe/bin/quests/whichone", (err, stdout, stderr) => {console.log(stdout)})
+    console.log('which one?')
+    exec("cat /home/brody/Serverfiles/Erupe/bin/quests/whichone", (err, stdout, stderr) => {console.log(stdout)})
 
-  // });
+  });
 
 // 0 0 * * *
 
