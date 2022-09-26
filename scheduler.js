@@ -3,7 +3,7 @@ var cron = require('node-cron');
 const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
 const { Client, Intents, MessageEmbed } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const { client } = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fs = require('fs');
 //also install module "uuid"
 
