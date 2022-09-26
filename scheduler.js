@@ -118,7 +118,7 @@ exec('konsole -e "tmuxinator start gameserver"')
 
 // 0 0 * * *
 
-cron.schedule('35 11 * * *', () => {
+cron.schedule('38 11 * * *', () => {
   console.log("running thescript to randomize")
 
   client.channels.cache.get('988518785940082768').messages.fetch().then(fetched => {
