@@ -2,7 +2,7 @@ var cron = require('node-cron');
 // var sudo = require('sudo-js');
 const { exec, execFile, execSync } = require('child_process');
 const { stderr, stdout } = require('process');
-const { Client, GatewayIntentBits, MessageEmbed } = require('discord.js');
+const { GatewayIntentBits,Client, MessageEmbed } = require('discord.js');
 const { client } = new Client({ intents: [GatewayIntentBits.Guilds] });
 const fs = require('fs');
 //also install module "uuid"
