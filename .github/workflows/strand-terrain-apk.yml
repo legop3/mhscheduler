@@ -27,6 +27,7 @@ jobs:
           mkdir -p "$OUT" /tmp/strand-assets
           UA="StrandTerrainPrototype/0.4.1 (+https://polyhaven.com)"
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.jpg" -o "$OUT/aerial_grass_rock_diff_1k.jpg"
+          curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg" -o "$OUT/dirt_diff_1k.jpg"
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_ground/rock_ground_diff_1k.jpg" -o "$OUT/rock_ground_diff_1k.jpg"
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/leafy_grass/leafy_grass_diff_4k.jpg" -o /tmp/strand-assets/leafy_grass.jpg
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/mossy_rock/mossy_rock_diff_4k.jpg" -o /tmp/strand-assets/mossy_rock.jpg
@@ -49,12 +50,20 @@ jobs:
           if bbox:
               diff=diff.crop(bbox); alpha=alpha.crop(bbox)
           rgba=Image.new('RGBA',diff.size); rgba.paste(diff,(0,0)); rgba.putalpha(alpha)
-          rgba.thumbnail((512,384),Image.Resampling.LANCZOS)
-          canvas=Image.new('RGBA',(512,384),(0,0,0,0))
-          x=(512-rgba.width)//2; y=384-rgba.height
+          rgba.thumbnail((512,480),Image.Resampling.LANCZOS)
+          canvas=Image.new('RGBA',(512,512),(0,0,0,0))
+          x=(512-rgba.width)//2; y=512-rgba.height
           canvas.alpha_composite(rgba,(x,y)); canvas.save(out/'grass_card_rgba.png',optimize=True)
           PY
-          file "$OUT"/leafy_grass_diff_1k.jpg "$OUT"/mossy_rock_diff_1k.jpg "$OUT"/grass_card_rgba.png
+          file "$OUT"/leafy_grass_diff_1k.jpg "$OUT"/mossy_rock_diff_1k.jpg "$OUT"/grass_card_rgba.png "$OUT"/dirt_diff_1k.jpg
+      - name: Patch fail-soft renderer source
+        run: |
+          set -euxo pipefail
+          SRC="strand-prototype/app/src/main/java/com/openai/strandterrain/IcelandSafeActivity.java"
+          sed -i 's/Renderer r=terrainView\.r/IcelandRenderer r=terrainView.r/g' "$SRC"
+          sed -i 's/Renderer r=new Renderer()/IcelandRenderer r=new IcelandRenderer()/g' "$SRC"
+          sed -i 's/class Renderer implements GLSurfaceView\.Renderer/class IcelandRenderer implements GLSurfaceView.Renderer/g' "$SRC"
+          grep -nE 'IcelandRenderer|class Renderer' "$SRC" | head -12
       - name: Build release APK
         working-directory: strand-prototype
         run: gradle --no-daemon assembleRelease
