@@ -40,6 +40,13 @@ jobs:
         run: |
           set -euxo pipefail
           python3 tools/patch_v06.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/openai/strandterrain/SafeActivity.java')
+          s=p.read_text()
+          s=s.replace('v0.6 scanned rocks • grass clumps • carved valleys\nCC0 scans: Poly Haven', 'v0.6 scanned rocks • grass clumps • carved valleys • Poly Haven CC0')
+          p.write_text(s)
+          PY
           grep -nE 'STRAND TERRAIN v0.6|scannedOutcrops|buildGrass|uGrass|distance=19' app/src/main/java/com/openai/strandterrain/SafeActivity.java | head -30
 
       - name: Build release APK
