@@ -20,16 +20,27 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+      - name: Fetch CC0 terrain textures
+        run: |
+          set -euxo pipefail
+          OUT="strand-prototype/app/src/main/res/drawable-nodpi"
+          mkdir -p "$OUT"
+          UA="StrandTerrainPrototype/0.3 (+https://polyhaven.com)"
+          curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.jpg" -o "$OUT/aerial_grass_rock_diff_1k.jpg"
+          curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg" -o "$OUT/dirt_diff_1k.jpg"
+          curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_ground/rock_ground_diff_1k.jpg" -o "$OUT/rock_ground_diff_1k.jpg"
+          file "$OUT"/*.jpg
       - name: Build release APK
         working-directory: strand-prototype
         run: gradle --no-daemon assembleRelease
       - name: Rename APK
-        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.2.1.apk
+        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.3.apk
       - name: Verify APK
         run: |
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.2.1.apk
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.2.1.apk | head -8
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.3.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.3.apk | head -8
+          ls -lh StrandTerrain-v0.3.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: StrandTerrain-v0.2.1
-          path: StrandTerrain-v0.2.1.apk
+          name: StrandTerrain-v0.3
+          path: StrandTerrain-v0.3.apk
