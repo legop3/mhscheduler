@@ -20,27 +20,56 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Fetch CC0 terrain textures
+      - name: Prepare CC0 Iceland terrain and grass assets
         run: |
           set -euxo pipefail
           OUT="strand-prototype/app/src/main/res/drawable-nodpi"
-          mkdir -p "$OUT"
-          UA="StrandTerrainPrototype/0.3 (+https://polyhaven.com)"
+          mkdir -p "$OUT" /tmp/strand-assets
+          UA="StrandTerrainPrototype/0.4 (+https://polyhaven.com)"
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.jpg" -o "$OUT/aerial_grass_rock_diff_1k.jpg"
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg" -o "$OUT/dirt_diff_1k.jpg"
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_ground/rock_ground_diff_1k.jpg" -o "$OUT/rock_ground_diff_1k.jpg"
-          file "$OUT"/*.jpg
+          curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/leafy_grass/leafy_grass_diff_4k.jpg" -o /tmp/strand-assets/leafy_grass.jpg
+          curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/mossy_rock/mossy_rock_diff_4k.jpg" -o /tmp/strand-assets/mossy_rock.jpg
+          curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/grass_medium_01/grass_medium_01_diff_4k.jpg" -o /tmp/strand-assets/grass_diff.jpg
+          curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/grass_medium_01/grass_medium_01_alpha_4k.jpg" -o /tmp/strand-assets/grass_alpha.jpg
+          python3 -m pip install --quiet pillow
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          out=Path('strand-prototype/app/src/main/res/drawable-nodpi')
+          for src,dst in [('/tmp/strand-assets/leafy_grass.jpg','leafy_grass_diff_1k.jpg'),('/tmp/strand-assets/mossy_rock.jpg','mossy_rock_diff_1k.jpg')]:
+              im=Image.open(src).convert('RGB').resize((1024,1024),Image.Resampling.LANCZOS)
+              im.save(out/dst,'JPEG',quality=86,optimize=True)
+          diff=Image.open('/tmp/strand-assets/grass_diff.jpg').convert('RGB')
+          alpha=Image.open('/tmp/strand-assets/grass_alpha.jpg').convert('L')
+          box=(760,3000,2040,3720)
+          diff=diff.crop(box)
+          alpha=alpha.crop(box)
+          mask=alpha.point(lambda p:255 if p>8 else 0)
+          bbox=mask.getbbox()
+          if bbox:
+              diff=diff.crop(bbox); alpha=alpha.crop(bbox)
+          rgba=Image.new('RGBA',diff.size)
+          rgba.paste(diff,(0,0)); rgba.putalpha(alpha)
+          rgba.thumbnail((512,384),Image.Resampling.LANCZOS)
+          canvas=Image.new('RGBA',(512,384),(0,0,0,0))
+          x=(512-rgba.width)//2; y=384-rgba.height
+          canvas.alpha_composite(rgba,(x,y))
+          canvas.save(out/'grass_card_rgba.png',optimize=True)
+          PY
+          file "$OUT"/leafy_grass_diff_1k.jpg "$OUT"/mossy_rock_diff_1k.jpg "$OUT"/grass_card_rgba.png
       - name: Build release APK
         working-directory: strand-prototype
         run: gradle --no-daemon assembleRelease
       - name: Rename APK
-        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.3.apk
+        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.4.apk
       - name: Verify APK
         run: |
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.3.apk
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.3.apk | head -8
-          ls -lh StrandTerrain-v0.3.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.4.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.4.apk | head -8
+          ls -lh StrandTerrain-v0.4.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: StrandTerrain-v0.3
-          path: StrandTerrain-v0.3.apk
+          name: StrandTerrain-v0.4
+          path: StrandTerrain-v0.4.apk
