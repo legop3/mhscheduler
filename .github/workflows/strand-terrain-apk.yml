@@ -20,12 +20,12 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Prepare Iceland grass-dominant ground texture
+      - name: Prepare greener Iceland grass ground
         run: |
           set -euxo pipefail
           OUT="strand-prototype/app/src/main/res/drawable-nodpi"
           mkdir -p "$OUT" /tmp/strand-assets
-          UA="StrandTerrainPrototype/0.4.3 (+https://polyhaven.com)"
+          UA="StrandTerrainPrototype/0.4.4 (+https://polyhaven.com)"
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/leafy_grass/leafy_grass_diff_4k.jpg" -o /tmp/strand-assets/leafy_grass.jpg
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg" -o "$OUT/dirt_diff_1k.jpg"
           curl -L --fail --retry 3 -A "$UA" "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_ground/rock_ground_diff_1k.jpg" -o "$OUT/rock_ground_diff_1k.jpg"
@@ -33,26 +33,46 @@ jobs:
           python3 - <<'PY'
           from PIL import Image, ImageEnhance
           im=Image.open('/tmp/strand-assets/leafy_grass.jpg').convert('RGB').resize((1024,1024),Image.Resampling.LANCZOS)
-          # Slightly cool/green the scan while retaining natural luminance and texture detail.
+          # Keep the source photographic, but bias it toward the cool saturated greens
+          # of the Icelandic grasslands we are targeting.
+          im=ImageEnhance.Color(im).enhance(1.13)
           r,g,b=im.split()
-          g=ImageEnhance.Brightness(g).enhance(1.08)
-          r=ImageEnhance.Brightness(r).enhance(0.96)
+          r=ImageEnhance.Brightness(r).enhance(0.93)
+          g=ImageEnhance.Brightness(g).enhance(1.12)
           b=ImageEnhance.Brightness(b).enhance(0.98)
           im=Image.merge('RGB',(r,g,b))
-          im.save('strand-prototype/app/src/main/res/drawable-nodpi/aerial_grass_rock_diff_1k.jpg','JPEG',quality=88,optimize=True)
+          im.save('strand-prototype/app/src/main/res/drawable-nodpi/aerial_grass_rock_diff_1k.jpg','JPEG',quality=90,optimize=True)
           PY
           file "$OUT"/*.jpg
+      - name: Patch stable shader grass scale and coverage
+        run: |
+          set -euxo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('strand-prototype/app/src/main/java/com/openai/strandterrain/SafeActivity.java')
+          s=p.read_text()
+          old='texture2D(uMoss,vPos.xz/15.0).rgb'
+          new='texture2D(uMoss,vPos.xz/3.0).rgb'
+          assert old in s, 'expected stable grass texture sample not found'
+          s=s.replace(old,new,1)
+          old='float mw=clamp((.48+.62*vMoist)*(1.0-rw)*(1.0-smoothstep(.18,.50,slope)),0.0,1.0);'
+          new='float mw=clamp((.70+.38*vMoist)*(1.0-rw)*(1.0-smoothstep(.22,.56,slope)),0.0,1.0);'
+          assert old in s, 'expected stable grass coverage expression not found'
+          s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+          grep -o 'texture2D(uMoss,vPos.xz/3.0).rgb' strand-prototype/app/src/main/java/com/openai/strandterrain/SafeActivity.java
       - name: Build release APK
         working-directory: strand-prototype
         run: gradle --no-daemon assembleRelease
       - name: Rename APK
-        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.4.3.apk
+        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.4.4.apk
       - name: Verify APK
         run: |
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.4.3.apk
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.4.3.apk | head -8
-          ls -lh StrandTerrain-v0.4.3.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.4.4.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.4.4.apk | head -8
+          ls -lh StrandTerrain-v0.4.4.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: StrandTerrain-v0.4.3
-          path: StrandTerrain-v0.4.3.apk
+          name: StrandTerrain-v0.4.4
+          path: StrandTerrain-v0.4.4.apk
