@@ -21,10 +21,10 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Install v0.6 asset tools
+      - name: Install v0.6.1 asset tools
         run: python3 -m pip install --quiet pillow numpy trimesh pygltflib fast-simplification
 
-      - name: Prepare v0.6 Iceland CC0 assets
+      - name: Prepare v0.6.1 Iceland CC0 assets
         working-directory: strand-prototype
         run: |
           set -euxo pipefail
@@ -40,29 +40,28 @@ jobs:
         run: |
           set -euxo pipefail
           python3 tools/patch_v06.py
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('app/src/main/java/com/openai/strandterrain/SafeActivity.java')
-          s=p.read_text()
-          s=s.replace('v0.6 scanned rocks • grass clumps • carved valleys\nCC0 scans: Poly Haven', 'v0.6 scanned rocks • grass clumps • carved valleys • Poly Haven CC0')
-          p.write_text(s)
-          PY
-          grep -nE 'STRAND TERRAIN v0.6|scannedOutcrops|buildGrass|uGrass|distance=19' app/src/main/java/com/openai/strandterrain/SafeActivity.java | head -30
+
+      - name: Apply v0.6.1 corrections
+        working-directory: strand-prototype
+        run: |
+          set -euxo pipefail
+          python3 tools/patch_v061.py
+          grep -nE 'STRAND TERRAIN v0.6.1|target=920|formations=3|desiredAnchors=18|clusters=18|erosionDetail' app/src/main/java/com/openai/strandterrain/SafeActivity.java | head -30
 
       - name: Build release APK
         working-directory: strand-prototype
         run: gradle --no-daemon assembleRelease
 
       - name: Rename APK
-        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.6.apk
+        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.6.1.apk
 
       - name: Verify APK
         run: |
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.6.apk
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.6.apk | head -8
-          ls -lh StrandTerrain-v0.6.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.6.1.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.6.1.apk | head -8
+          ls -lh StrandTerrain-v0.6.1.apk
 
       - uses: actions/upload-artifact@v4
         with:
-          name: StrandTerrain-v0.6
-          path: StrandTerrain-v0.6.apk
+          name: StrandTerrain-v0.6.1
+          path: StrandTerrain-v0.6.1.apk
