@@ -12,6 +12,10 @@ def rep(old, new, count=1):
 # Identity / HUD
 rep('STRAND TERRAIN v0.6', 'STRAND TERRAIN v0.6.1')
 rep('v0.6 scanned rocks • grass clumps • carved valleys', 'v0.6.1 denser geology • softer grass • deeper contrast')
+# patch_v06 intentionally carries a second HUD line as a literal newline; collapse it back
+# into a valid single Java string for this build.
+s = s.replace('v0.6.1 denser geology • softer grass • deeper contrast\nCC0 scans: Poly Haven',
+              'v0.6.1 denser geology • softer grass • deeper contrast • Poly Haven CC0')
 
 # Cooler/darker overcast background so terrain does not wash into the sky.
 rep('GLES20.glClearColor(.49f-.10f*wet,.52f-.11f*wet,.51f-.10f*wet,1);',
