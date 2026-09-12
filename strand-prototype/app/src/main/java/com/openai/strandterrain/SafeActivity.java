@@ -42,12 +42,12 @@ public class SafeActivity extends Activity {
         cell.setOnClickListener(v->{terrainView.r.seed++;terrainView.r.rebuild=true;updateStatus();});
         setContentView(root); updateStatus();
     }
-    void updateStatus(){ if(status==null||terrainView==null)return; Renderer r=terrainView.r; status.setText("STRAND TERRAIN v0.2.1\nCELL #"+r.seed+" • "+(r.raining?"TIMEFALL ACTIVE":"DRYING / DRY")+"\nporter • rocks • hydrology • wetness"); }
+    void updateStatus(){ if(status==null||terrainView==null)return; StrandRenderer r=terrainView.r; status.setText("STRAND TERRAIN v0.2.1\nCELL #"+r.seed+" • "+(r.raining?"TIMEFALL ACTIVE":"DRYING / DRY")+"\nporter • rocks • hydrology • wetness"); }
     @Override protected void onResume(){super.onResume();terrainView.onResume();}
     @Override protected void onPause(){terrainView.onPause();super.onPause();}
 
     class TerrainView extends GLSurfaceView {
-        Renderer r=new Renderer(); float sx,sy,lx,ly,oldDist; boolean moving,pinch;
+        StrandRenderer r=new StrandRenderer(); float sx,sy,lx,ly,oldDist; boolean moving,pinch;
         TerrainView(){super(SafeActivity.this);setEGLContextClientVersion(2);setRenderer(r);setRenderMode(RENDERMODE_CONTINUOUSLY);}
         float clamp(float v){return Math.max(-1,Math.min(1,v));}
         float dist(MotionEvent e){float x=e.getX(0)-e.getX(1),y=e.getY(0)-e.getY(1);return (float)Math.sqrt(x*x+y*y);}
@@ -59,7 +59,7 @@ public class SafeActivity extends Activity {
         }
     }
 
-    static class Renderer implements GLSurfaceView.Renderer {
+    static class StrandRenderer implements GLSurfaceView.Renderer {
         static final int N=105; static final float CELL=128f;
         FloatBuffer terrainVB, rockVB, cubeVB; ShortBuffer terrainIB,cubeIB; int terrainCount,rockCount,cubeCount;
         int terrainProgram,objProgram; int taPos,taNormal,taMoist,tuMvp,tuWet,tuCam,oaPos,oaNormal,ouMvp,ouModel,ouColor,ouWet;
