@@ -14,7 +14,7 @@ TMP = Path('/tmp/strand-v06')
 DRAW.mkdir(parents=True, exist_ok=True)
 RAW.mkdir(parents=True, exist_ok=True)
 TMP.mkdir(parents=True, exist_ok=True)
-UA = 'StrandTerrainPrototype/0.6 (+https://polyhaven.com)'
+UA = 'StrandTerrainPrototype/0.6.1 (+https://polyhaven.com)'
 
 
 def http_bytes(url):
@@ -172,10 +172,11 @@ def save_grade(src, dest, size=(1024,1024), color=1.0, bright=1.0, contrast=1.0,
     im = ImageEnhance.Contrast(im).enhance(contrast)
     im.save(dest, 'JPEG', quality=89, optimize=True)
 
-save_grade(leafy, DRAW/'leafy_grass_diff_1k.jpg', color=1.18, contrast=1.05, rgb=(0.91,1.15,0.98))
-save_grade(moss, DRAW/'aerial_grass_rock_diff_1k.jpg', color=1.06, bright=.96, contrast=1.04, rgb=(.95,1.06,.97))
+# Stronger but still natural Icelandic green; preserve dark detail for contrast.
+save_grade(leafy, DRAW/'leafy_grass_diff_1k.jpg', color=1.28, contrast=1.10, rgb=(0.86,1.22,0.95))
+save_grade(moss, DRAW/'aerial_grass_rock_diff_1k.jpg', color=1.10, bright=.94, contrast=1.08, rgb=(.92,1.10,.95))
 shutil.copyfile(dirt, DRAW/'dirt_diff_1k.jpg')
-save_grade(rock, DRAW/'rock_ground_diff_1k.jpg', color=.92, bright=.94, contrast=1.10, rgb=(.96,1.00,.98))
+save_grade(rock, DRAW/'rock_ground_diff_1k.jpg', color=.90, bright=.91, contrast=1.15, rgb=(.94,.98,.96))
 
 # --- Scanned geometry ---
 outcrops = []
@@ -188,4 +189,4 @@ rocks += components('rock_moss_set_01', 240, 6)
 write_meshbin(RAW/'strand_outcrops.bin', outcrops)
 write_meshbin(RAW/'strand_rocks.bin', rocks)
 
-print('v0.6 assets ready:', len(outcrops), 'outcrops,', len(rocks), 'rock templates')
+print('v0.6.1 assets ready:', len(outcrops), 'outcrops,', len(rocks), 'rock templates')
