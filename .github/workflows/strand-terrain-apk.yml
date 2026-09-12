@@ -24,12 +24,12 @@ jobs:
         working-directory: strand-prototype
         run: gradle --no-daemon assembleRelease
       - name: Rename APK
-        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.2.apk
+        run: cp strand-prototype/app/build/outputs/apk/release/app-release.apk StrandTerrain-v0.2.1.apk
       - name: Verify APK
         run: |
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.2.apk
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.2.apk | head -8
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs StrandTerrain-v0.2.1.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging StrandTerrain-v0.2.1.apk | head -8
       - uses: actions/upload-artifact@v4
         with:
-          name: StrandTerrain-v0.2
-          path: StrandTerrain-v0.2.apk
+          name: StrandTerrain-v0.2.1
+          path: StrandTerrain-v0.2.1.apk
